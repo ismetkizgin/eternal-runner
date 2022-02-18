@@ -17,7 +17,7 @@ public class animationNmovement : MonoBehaviour
     bool isRunPressed;
     Animator animat;
     float rotationFactorPerFrame = 10.0f;
-    float runMultiplier = 3.0f;
+    float runMultiplier = 13.0f;
     // Start is called before the first frame update
     void Awake()
     {

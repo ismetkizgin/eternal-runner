@@ -2,16 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.EventSystems;
-
 
 public class animationNmovement : MonoBehaviour
 {
-    
-    public PlayerInput playerInput;
+    PlayerInput playerInput;
     CharacterController characterController;
     public GameObject forward;
-    //public Joystick joystick;
 
     int isWhash;
     int isRhash;
@@ -21,17 +17,11 @@ public class animationNmovement : MonoBehaviour
     bool isMovementPressed;
     bool isRunPressed;
     Animator animat;
-    public float rotationFactorPerFrame = 10.0f;
+    float rotationFactorPerFrame = 10.0f;
     //float runMultiplier = 13.0f;
     public float speed = 5.0f;
     public int lvl = 13;
     // Start is called before the first frame update
-
-    //public void EnableGameplayControls()
-    //{
-    //    playerInput.SwitchCurrentActionMap(animationNmovement);
-    //}
-
     void Awake()
     {
 
@@ -119,21 +109,7 @@ public class animationNmovement : MonoBehaviour
         handleRotation();
         handleAnimat();
 
-        //if(joystick.Direction >= .2f)
-        //{
-        //    rotationFactorPerFrame = speed;
-        //}
-        //else if(joystick.Horizontal <= -.2f )
-        //{
-        //    rotationFactorPerFrame = -speed;
-        //}
-        //else
-        //{
-        //    rotationFactorPerFrame = 0f;
-        //}
-
-
-        characterController.Move(Vector3.forward * lvl * Time.deltaTime);
+            characterController.Move(Vector3.forward *lvl* Time.deltaTime);
         if (isRunPressed)
         {
             characterController.Move(currentRunMovement * Time.deltaTime);

@@ -82,7 +82,7 @@ public class buttonFunction : MonoBehaviour
     }
 
     public void Play(){
-        SceneManager.LoadScene("SahneGame");//Oyun Sahnesine Geçiş
+        SceneManager.LoadScene("SampleScene");//Oyun Sahnesine Geçiş
     }
 
     public void Settings(){

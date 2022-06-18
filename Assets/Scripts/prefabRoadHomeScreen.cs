@@ -7,8 +7,8 @@ public class prefabRoadHomeScreen : MonoBehaviour
     public float speed;
     Vector3 rota;
     void Start()
-    {
-        Destroy(gameObject, 135);
+    {        Destroy(gameObject, 135);
+
         rota = new Vector3(0, 0, -1);
     }
     void Update()

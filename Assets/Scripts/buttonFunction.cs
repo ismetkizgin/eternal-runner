@@ -9,11 +9,12 @@ public class buttonFunction : MonoBehaviour
     /*
     Burdaki kodlar HomeScreen, CharacterSelectionScreen ve SettingScreen de kullanılmakta.
     */
+
     public GameObject settingscreen;
     public GameObject mainscreen;
     public GameObject characterselectionscreen;
     Image _ajbuttonimage,_amybuttonimage; 
-    public int character; //0->Amy, 1->Aj
+    public  int character; //0->emy, 1->Aj
     public GameObject amybutton, ajbutton;
     [SerializeField] Color characterselectionactivecolor, characterselectiondefaultcolor;
     [SerializeField] RectTransform musicuihandlerecttransform, sounduihandlerecttransform;

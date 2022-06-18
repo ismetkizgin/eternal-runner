@@ -72,7 +72,7 @@ public class ObstaclesController : MonoBehaviour
             }
 
             //belli bir miktar süre sonra objeler yok oluyor.
-            Destroy(gameObj,40);
+            Destroy(gameObj,20);
 
             timer = 0;
         }

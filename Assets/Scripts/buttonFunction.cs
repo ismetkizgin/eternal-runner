@@ -13,8 +13,13 @@ public class buttonFunction : MonoBehaviour
     public GameObject settingscreen;
     public GameObject mainscreen;
     public GameObject characterselectionscreen;
+<<<<<<< Updated upstream
     Image _ajbuttonimage,_amybuttonimage; 
     public  int character; //0->emy, 1->Aj
+=======
+    Image _ajbuttonimage, _amybuttonimage;
+    public int character; //0->emy, 1->Aj
+>>>>>>> Stashed changes
     public GameObject amybutton, ajbutton;
     [SerializeField] Color characterselectionactivecolor, characterselectiondefaultcolor;
     [SerializeField] RectTransform musicuihandlerecttransform, sounduihandlerecttransform;
@@ -28,14 +33,15 @@ public class buttonFunction : MonoBehaviour
     public GameObject musicswitchtoggle, soundswitchtoggle;
     public AudioSource music;
 
-    private void Awake(){
+    private void Awake()
+    {
         HomeScreen();
 
-        _musicToggle = musicswitchtoggle.GetComponent <Toggle> ();
+        _musicToggle = musicswitchtoggle.GetComponent<Toggle>();
         _musicHandlePosition = musicuihandlerecttransform.anchoredPosition;
 
-        _musicBackgroundImage = musicuihandlerecttransform.parent.GetComponent <Image>();
-        _musicHandleImage = musicuihandlerecttransform.GetComponent <Image> ();
+        _musicBackgroundImage = musicuihandlerecttransform.parent.GetComponent<Image>();
+        _musicHandleImage = musicuihandlerecttransform.GetComponent<Image>();
 
         _musicBackgroundDefaultColor = _musicBackgroundImage.color;
         _musicHandleDefaultColor = _musicHandleImage.color;
@@ -43,26 +49,28 @@ public class buttonFunction : MonoBehaviour
         _ajbuttonimage = ajbutton.GetComponent<Image>();
         _amybuttonimage = amybutton.GetComponent<Image>();
 
-        _soundToggle = soundswitchtoggle.GetComponent <Toggle> ();
+        _soundToggle = soundswitchtoggle.GetComponent<Toggle>();
         _soundHandlePosition = sounduihandlerecttransform.anchoredPosition;
 
-        _soundBackgroundImage = sounduihandlerecttransform.parent.GetComponent <Image>();
-        _soundHandleImage = sounduihandlerecttransform.GetComponent <Image> ();
+        _soundBackgroundImage = sounduihandlerecttransform.parent.GetComponent<Image>();
+        _soundHandleImage = sounduihandlerecttransform.GetComponent<Image>();
 
         _soundBackgroundDefaultColor = _soundBackgroundImage.color;
         _soundHandleDefaultColor = _soundHandleImage.color;
 
-        if(!PlayerPrefs.HasKey("character")){
-            PlayerPrefs.SetInt("character",1);
+        if (!PlayerPrefs.HasKey("character"))
+        {
+            PlayerPrefs.SetInt("character", 1);
             CharacterLoad();
         }
-        else{
+        else
+        {
             CharacterLoad();
         }
 
-        if(!PlayerPrefs.HasKey("musicentry"))
+        if (!PlayerPrefs.HasKey("musicentry"))
         {
-            PlayerPrefs.SetInt("musicentry",1);
+            PlayerPrefs.SetInt("musicentry", 1);
             MusicLoad();
         }
         else
@@ -70,9 +78,9 @@ public class buttonFunction : MonoBehaviour
             MusicLoad();
         }
 
-        if(!PlayerPrefs.HasKey("soundentry"))
+        if (!PlayerPrefs.HasKey("soundentry"))
         {
-            PlayerPrefs.SetInt("soundentry",1);
+            PlayerPrefs.SetInt("soundentry", 1);
             SoundLoad();
         }
         else
@@ -82,48 +90,57 @@ public class buttonFunction : MonoBehaviour
 
     }
 
-    public void Play(){
+    public void Play()
+    {
         SceneManager.LoadScene("SampleScene");//Oyun Sahnesine Geçiş
     }
 
-    public void Settings(){
+    public void Settings()
+    {
         mainscreen.SetActive(false);
         settingscreen.SetActive(true);
     }
 
-    public void CharacterSelection(){
+    public void CharacterSelection()
+    {
         mainscreen.SetActive(false);
         characterselectionscreen.SetActive(true);
     }
 
-    public void HomeScreen(){
+    public void HomeScreen()
+    {
         settingscreen.SetActive(false);
         characterselectionscreen.SetActive(false);
         mainscreen.SetActive(true);
     }
 
-    void CharacterLoad(){
-        if(PlayerPrefs.GetInt("character") == 1){
+    void CharacterLoad()
+    {
+        if (PlayerPrefs.GetInt("character") == 1)
+        {
             AjButtonClick();
         }
-        else{
+        else
+        {
             AmyButtonClick();
         }
     }
 
-    public void AjButtonClick(){
+    public void AjButtonClick()
+    {
         _ajbuttonimage.color = characterselectionactivecolor;
         _amybuttonimage.color = characterselectiondefaultcolor;
 
-        PlayerPrefs.SetInt("character",1);
+        PlayerPrefs.SetInt("character", 1);
         character = 1;
     }
 
-    public void AmyButtonClick(){
+    public void AmyButtonClick()
+    {
         _amybuttonimage.color = characterselectionactivecolor;
         _ajbuttonimage.color = characterselectiondefaultcolor;
 
-        PlayerPrefs.SetInt("character",0);
+        PlayerPrefs.SetInt("character", 0);
         character = 0;
     }
 
@@ -143,7 +160,7 @@ public class buttonFunction : MonoBehaviour
 
     public void MusicLoad()
     {
-        if(PlayerPrefs.GetInt("musicentry") == 0)
+        if (PlayerPrefs.GetInt("musicentry") == 0)
         {
             musicentry = 0;
             _musicToggle.isOn = false;
@@ -159,19 +176,19 @@ public class buttonFunction : MonoBehaviour
         }
     }
 
-     public void ChangeMusic()
+    public void ChangeMusic()
     {
-        if(_musicToggle.isOn)
+        if (_musicToggle.isOn)
         {
             musicentry = 1;
-            PlayerPrefs.SetInt("musicentry",1);
+            PlayerPrefs.SetInt("musicentry", 1);
             MusicOnSwitch(true);
             music.Play();
         }
         else
         {
             musicentry = 0;
-            PlayerPrefs.SetInt("musicentry",0);
+            PlayerPrefs.SetInt("musicentry", 0);
             MusicOnSwitch(false);
             music.Pause();
         }
@@ -179,7 +196,7 @@ public class buttonFunction : MonoBehaviour
 
     public void SoundLoad()
     {
-        if(PlayerPrefs.GetInt("soundentry") == 0)
+        if (PlayerPrefs.GetInt("soundentry") == 0)
         {
             soundentry = 0;
             _soundToggle.isOn = false;
@@ -196,17 +213,18 @@ public class buttonFunction : MonoBehaviour
     public void ChangeSound()
     {
         //AudioListener.pause = toggle.isOn;
-        if(_soundToggle.isOn)
+        if (_soundToggle.isOn)
         {
             soundentry = 1;
-            PlayerPrefs.SetInt("soundentry",1);
+            PlayerPrefs.SetInt("soundentry", 1);
             SoundOnSwitch(true);
         }
         else
         {
             soundentry = 0;
-            PlayerPrefs.SetInt("soundentry",0);
+            PlayerPrefs.SetInt("soundentry", 0);
             SoundOnSwitch(false);
         }
     }
 }
+

@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class pointController : MonoBehaviour
 {
-    private AudioSource click;
+    [SerializeField] private AudioSource click;
     [SerializeField] int scoreValue;
     private scoreManager sManager;
     private void Start()

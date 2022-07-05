@@ -8,6 +8,7 @@ TagManager:
   - coin
   - Engel
   - Obstacle
+  - death
   layers:
   - Default
   - TransparentFX

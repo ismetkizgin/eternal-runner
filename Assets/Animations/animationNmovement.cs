@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class animationNmovement : MonoBehaviour
 {
+
     PlayerInput playerInput;
     CharacterController characterController;
     public GameObject forward;
@@ -17,7 +19,7 @@ public class animationNmovement : MonoBehaviour
     bool isMovementPressed;
     bool isRunPressed;
     Animator animat;
-    float rotationFactorPerFrame = 10.0f;
+    public float rotationFactorPerFrame = 10.0f;
     //float runMultiplier = 13.0f;
     public float speed = 5.0f;
     public int lvl = 13;
@@ -31,12 +33,14 @@ public class animationNmovement : MonoBehaviour
 
        // isWhash = Animator.StringToHash("isW");
         isRhash = Animator.StringToHash("isR");
-
+        ///sag sol haraketini burasý yaptýrýyor
         playerInput.characterControls.Move.started += onMovementInput;
         playerInput.characterControls.Move.performed += onMovementInput;
         playerInput.characterControls.Move.canceled += onMovementInput;
-       // playerInput.characterControls.Run.started += onRun;
+        // playerInput.characterControls.Run.started += onRun;
         //playerInput.characterControls.Run.canceled += onRun;
+
+        Debug.Log("Karakter no: "+PlayerPrefs.GetInt("character"));
 
     }
 
@@ -47,14 +51,15 @@ public class animationNmovement : MonoBehaviour
     void onMovementInput(InputAction.CallbackContext context)
     {
             currentMovementInput = context.ReadValue<Vector2>();
-            currentMovement.x = currentMovementInput.x * lvl;
-            currentMovement.z = currentMovementInput.y * lvl;
+           currentMovement.x = currentMovementInput.x * lvl;
+      ///ileri geriyi kapattýk //     currentMovement.z = currentMovementInput.y * lvl;
             //currentRunMovement.x = currentMovementInput.x * runMultiplier;
            // currentRunMovement.z = currentMovementInput.y * runMultiplier;
             isMovementPressed = currentMovementInput.x != 0 || currentMovementInput.y != 0;
     }
 
-    void handleRotation()
+
+    public void handleRotation()
     {
         Vector3 positionToLookAt;
         positionToLookAt.x = currentMovement.x;
@@ -77,7 +82,7 @@ public class animationNmovement : MonoBehaviour
 
     }
 
-    void handleAnimat()
+    public void handleAnimat()
     {
        // bool isW = animat.GetBool(isWhash);
         bool isR = animat.GetBool(isRhash);
@@ -106,10 +111,12 @@ public class animationNmovement : MonoBehaviour
 
     void Update()
     {
-        handleRotation();
+        
+
+        handleRotation();//animasyon
         handleAnimat();
 
-            characterController.Move(Vector3.forward *lvl* Time.deltaTime);
+        characterController.Move(Vector3.forward *lvl* Time.deltaTime);
         if (isRunPressed)
         {
             characterController.Move(currentRunMovement * Time.deltaTime);

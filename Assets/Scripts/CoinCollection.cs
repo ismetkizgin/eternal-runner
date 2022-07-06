@@ -24,7 +24,7 @@ public class CoinCollection : MonoBehaviour
                 other.gameObject.SetActive(false);
 
 
-              //  Destroy(other.gameObject);
+                Destroy(other.gameObject);
                 click.Play();
             }
 

@@ -8,9 +8,12 @@ public class pointController : MonoBehaviour
     private AudioSource click;
     [SerializeField] int scoreValue;
     private scoreManager sManager;
+
     private void Start()
     {
+        
         click = GetComponent<AudioSource>();
+
         sManager = FindObjectOfType<scoreManager>();
     }
     private void OnTriggerEnter(Collider other)
@@ -25,9 +28,9 @@ public class pointController : MonoBehaviour
 
         if (other.gameObject.CompareTag("Obstacle"))
         {
-
+           
             SceneManager.LoadScene("endscreen");
         }
-
+        
     }
 }

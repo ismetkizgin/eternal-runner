@@ -10,7 +10,8 @@ public class scoreManager : MonoBehaviour
     public int scorePsecond;
     public bool scoreInc;
     public float scoreCount;
-    // Start is called before the first frame update
+    public AudioSource audio2;
+
     private void Awake()
     {
         instance = this;
@@ -18,11 +19,8 @@ public class scoreManager : MonoBehaviour
     }
     void Start()
     {
-
-        
+        audio2 = GetComponent<AudioSource>();
     }
-
-    // Update is called once per frame
     void Update()
     {
         if(scoreInc)
@@ -30,6 +28,10 @@ public class scoreManager : MonoBehaviour
             scoreCount += scorePsecond * Time.deltaTime;
         }
         scoreText.text = "Score:" + Mathf.Round(scoreCount);
+       if (scoreCount>10)
+        {
+            audio2.Play();
+        }
     }
     public void AddScore(int pointsToAdd)
     {
